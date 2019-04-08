@@ -10,9 +10,11 @@ function setupLaunchList(launchData) {
         console.log(launch);
         $('#js-launch-list').append(
             `
+            <div class="launch-list-item">
             <h1>${launch.name}</h1>
             <p>${launch.missions[0] ? launch.missions[0].description : 'Mission description is unavailable.'}</p>
             <p>Launch window: <date>${launch.windowstart} to ${launch.windowend}</p>
+            </div>
             `
         );
     });
