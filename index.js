@@ -1,9 +1,22 @@
 'use strict'
 
 let launchData; // JSON from LaunchLibrary
+let weatherData; // JS Object to hold a reference to a launch ID and its associated weather forecast
 let map; // GoogleMap
 let mapLoaded = false;
 
+function setupLaunchList(launchData) {
+    launchData.forEach(launch => {
+        console.log(launch);
+        $('#js-launch-list').append(
+            `
+            <h1>${launch.name}</h1>
+            <p>${launch.missions[0] ? launch.missions[0].description : 'Mission description is unavailable.'}</p>
+            <p>Launch window: <date>${launch.windowstart} to ${launch.windowend}</p>
+            `
+        );
+    });
+}
 
 function addMapMarkers(launchData) {
     console.log(`mapLoaded: ${mapLoaded}`);
@@ -33,11 +46,12 @@ function setupApplication() {
     .then(rjson => {
         launchData = rjson.launches;
         addMapMarkers(launchData);
+        setupLaunchList(launchData);
     });
 }
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById('js-map'), {center: {lat: 30.2672, lng: 97.7431}, zoom: 3});
+    map = new google.maps.Map(document.getElementById('js-map'), {center: {lat: 30.2672, lng: -97.7431}, zoom: 3});
     mapLoaded = true;
 }
 
