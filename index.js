@@ -36,8 +36,7 @@ function addMapMarkers(launchData) {
 
 function setupApplication() {
     console.log('setupApplication()');
-    // Make request to LaunchLibrary.net for upcoming launches
-    // process the LaunchLibrary data into a new JS object - launch data
+    // TODO:
     // Make requests to weather API based on the location data for each launch
     // merge that weather data with the launch data object
     //
@@ -46,14 +45,15 @@ function setupApplication() {
     fetch('https://launchlibrary.net/1.4/launch/next/5')
     .then(response => response.json())
     .then(rjson => {
-        launchData = rjson.launches;
+        launchData = rjson.launches; // launches is the name of the array of launch elements
         addMapMarkers(launchData);
         setupLaunchList(launchData);
     });
 }
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById('js-map'), {center: {lat: 30.2672, lng: -97.7431}, zoom: 3});
+    map = new google.maps.Map(document.getElementById('js-map-inner'), {center: {lat: 30.2672, lng: -97.7431}, zoom: 3});
+    map.style.position = 'fixed';
     mapLoaded = true;
 }
 

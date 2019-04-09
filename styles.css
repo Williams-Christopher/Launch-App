@@ -2,11 +2,39 @@
     box-sizing: border-box;
 }
 
+:root {
+    --halfHeight: calc(100vh/2);
+}
+
 html, body {
     height:100%
 }
 
-#js-map {
-    min-height: 50%;
+/*  If this idea doesn't pan out
+    * Ditch the outer div and returnt he min-height to 50%
+    * Explore the idea of generating the map when a user clicks an item in the launch list?
+*/
+#js-map-outer {
+    min-height: var(--halfHeight);
+    position: fixed;
+    /* min-height: 50%; */
     width: 100%;
+    z-index: 1;
+}
+
+#js-map-inner {
+    min-height: var(--halfHeight);
+    /* min-height: 50%; */
+    width: 100%;
+}
+
+.container {
+    min-height: var(--halfHeight);
+    position: absolute;
+    top: var(--halfHeight);
+    overflow: hidden;
+}
+
+.launch-list-item {
+    border: 1px solid black;
 }
