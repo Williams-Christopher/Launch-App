@@ -9,20 +9,21 @@ let mapLoaded = false;
 function setupLaunchList(launchData) {
     launchData.forEach(launch => {
         console.log(launch);
-        $('#js-launch-list').append(
-            `
-            <div class="launch-list-item" >
-            <h1>${launch.name}</h1>
-            <p>${launch.missions[0] ? launch.missions[0].description : 'Mission description is unavailable.'}</p>
-            <p>Launch window: <date>${launch.windowstart} to ${launch.windowend}</p>
-            </div>
-            `
-        );
+        $('#js-launch-list')
+            .append(
+                `
+                <div class="launch-list-item" data-id="${launch.id}">
+                <h1>${launch.name}</h1>
+                <p>${launch.missions[0] ? launch.missions[0].description : 'Mission description is unavailable.'}</p>
+                <p>Launch window: <date>${launch.windowstart} to ${launch.windowend}</p>
+                </div>
+                `
+            )
     });
 }
 
 function setupMapMarkers(launchData) {
-    console.log(`mapLoaded: ${mapLoaded}`); // 'debugging' to make sure the map hs benn through init
+    console.log(`mapLoaded: ${mapLoaded}`); // 'debugging' to make sure the map has been through init
     console.log(`launchData length: ${launchData.length}`); // How many elements are in launchData
     // Per: https://developers.google.com/maps/documentation/javascript/earthquakes
     // Loop through the elements of launchData, extract the pad locations, create LatLng objects, and add a marker to the map
@@ -40,8 +41,11 @@ function setupMapMarkers(launchData) {
 }
 
 function setupClickListeners() {
-    $('.launch-list-item').click(event => {
-        console.log('Clicked a launchList item');
+        $('.launch-list-item').click(function(e) {
+        console.log($(this).data('id'));
+        let marker = markerList[$(this).data('id')];
+        map.setZoom(10);
+        map.setCenter(marker.getPosition());
     });
 }
 
