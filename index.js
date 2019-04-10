@@ -44,12 +44,34 @@ function setupMapMarkers(launchData) {
     console.log(markerList);
 }
 
-function highlightLaunchListElement(element) {
+function highlightLaunchListElement(element, isScroll = true) {
     if(currentSelectedListItem) {
         currentSelectedListItem.removeClass('launch-list-item-selected');
     }
     currentSelectedListItem = element;
     currentSelectedListItem.addClass('launch-list-item-selected');
+    if(isScroll) {
+        scrollSelectedElementToTop(element);
+    }
+}
+
+function scrollSelectedElementToTop(element) {
+    // console.log($(element).offset().top);
+    // console.log($(element).parent().offset().top);
+    // console.log($(element).parent().scrollTop());
+    // $($([document.documentElement, document.body])).animate({
+    //     //scrollTop: $(element).offset({top: window.innerHeight / 2, left: 0}).top
+    //     scrollTop: $(element[0]).offset().top
+    // }, 1000);
+    //$($([document.body, document.html])).animate({
+    // $($([document.documentElement, document.body])).animate({
+    //     scrollTop: $(element).parent().offset().top
+    // }, 1000);
+    // $(element).scrollTop(element.parent().offset().top);
+
+    //$($([document.documentElement, document.body])).parent().scrollTop($(element).offset().top - $(element).parent().offset().top + $(element).parent().scrollTop());
+    // $($([document.documentElement, document.body])).parent().animate({scrollTop: $(element).offset().top - $(element).parent().offset().top + $(element).parent().scrollTop()});
+    $($([document.documentElement, document.body])).animate({scrollTop: $(element).offset().top - $(element).parent().offset().top + $(element).parent().scrollTop()});
 }
 
 function launchListClickEvents() {
@@ -59,7 +81,7 @@ function launchListClickEvents() {
      let marker = markerList[$(this).data('id')];
      map.setZoom(mapMarkerSelectZoom);
      map.setCenter(marker.getPosition());
-     highlightLaunchListElement($(this));
+     highlightLaunchListElement($(this), false);
  });
 }
 
@@ -79,7 +101,8 @@ function findKeyForMarker(marker) {
 
 function findLaunchListItemForId(id) {
    let launchListElement = $('#js-launch-list').children(`[data-id="${id}"]`);
-   
+    // let launchListElement = $(`div[data-id="${id}"]`);
+    console.log('LaunchListElement:');
    console.log(launchListElement);
    highlightLaunchListElement(launchListElement);
 }
