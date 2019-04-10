@@ -6,6 +6,8 @@ let map; // GoogleMap
 let markerList = {}; // key: launch id from LaunchLibray, value: reference to associated GoogleMap marker
 let mapLoaded = false;
 let currentSelectedListItem = null;
+let mapInitialZoom = 2;
+let mapMarkerSelectZoom = 10;
 
 function setupLaunchList(launchData) {
     launchData.forEach(launch => {
@@ -35,6 +37,7 @@ function setupMapMarkers(launchData) {
         //console.log(lat, lng);
         let latLng = new google.maps.LatLng(lat, lng);
         let marker = new google.maps.Marker({position: latLng, map: map});
+        marker.addListener('click', mapMarkerClickEvent);
         // Finally, create an object whose keys are launchData.id and value is a reference to the marker
         markerList[launchData[i].id] = marker;
     }
@@ -54,13 +57,35 @@ function launchListClickEvents() {
  $('.launch-list-item').click(function(e) {
      console.log(`list item id: ${$(this).data('id')}`);
      let marker = markerList[$(this).data('id')];
-     map.setZoom(10);
+     map.setZoom(mapMarkerSelectZoom);
      map.setCenter(marker.getPosition());
      highlightLaunchListElement($(this));
  });
 }
 
+let mapMarkerClickEvent = function() {
+    console.log(this);
+    map.setZoom(mapMarkerSelectZoom);
+    map.setCenter(this.getPosition());
+    findKeyForMarker(this);
+}
+
+function findKeyForMarker(marker) {
+    let keys = Object.keys(markerList);
+    let launchListElementId = keys.filter(key => markerList[key] === marker);
+    console.log(launchListElementId[0]);
+    findLaunchListItemForId(launchListElementId[0]);
+}
+
+function findLaunchListItemForId(id) {
+   let launchListElement = $('#js-launch-list').children(`[data-id="${id}"]`);
+   
+   console.log(launchListElement);
+   highlightLaunchListElement(launchListElement);
+}
+
 function setupEventListeners() {
+    // Listener for marker clicks defined in setupMapMarkers()
     launchListClickEvents();
 }
 
@@ -83,7 +108,7 @@ function setupApplication() {
 }
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById('js-map-inner'), {center: {lat: 30.2672, lng: -97.7431}, zoom: 2});
+    map = new google.maps.Map(document.getElementById('js-map-inner'), {center: {lat: 30.2672, lng: -97.7431}, zoom: mapInitialZoom});
     //map.style.position = 'fixed';
     mapLoaded = true;
 }
