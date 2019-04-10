@@ -41,23 +41,27 @@ function setupMapMarkers(launchData) {
     console.log(markerList);
 }
 
-function setupEventListeners() {
-    launchListClickEvents();
+function highlightLaunchListElement(element) {
+    if(currentSelectedListItem) {
+        currentSelectedListItem.removeClass('launch-list-item-selected');
+    }
+    currentSelectedListItem = element;
+    currentSelectedListItem.addClass('launch-list-item-selected');
 }
 
 function launchListClickEvents() {
-       // User clicks a launchList item: zoom and center the map to the correct marker, highlight the list item
-    $('.launch-list-item').click(function(e) {
-        console.log(`list item id: ${$(this).data('id')}`);
-        let marker = markerList[$(this).data('id')];
-        map.setZoom(10);
-        map.setCenter(marker.getPosition());
-        if(currentSelectedListItem) {
-            currentSelectedListItem.removeClass('launch-list-item-selected');
-        }
-        currentSelectedListItem = $(this);
-        $(this).addClass('launch-list-item-selected');
-    });
+    // User clicks a launchList item: zoom and center the map to the correct marker, highlight the list item
+ $('.launch-list-item').click(function(e) {
+     console.log(`list item id: ${$(this).data('id')}`);
+     let marker = markerList[$(this).data('id')];
+     map.setZoom(10);
+     map.setCenter(marker.getPosition());
+     highlightLaunchListElement($(this));
+ });
+}
+
+function setupEventListeners() {
+    launchListClickEvents();
 }
 
 function setupApplication() {
