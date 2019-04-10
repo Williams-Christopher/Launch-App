@@ -1,10 +1,11 @@
 'use strict'
 
 let launchData; // JSON from LaunchLibrary
-let weatherData; // JS Object to hold a reference to a launch ID and its associated weather forecast
+//let weatherData; // JS Object to hold a reference to a launch ID and its associated weather forecast
 let map; // GoogleMap
-let markerList = {};
+let markerList = {}; // key: launch id from LaunchLibray, value: reference to associated GoogleMap marker
 let mapLoaded = false;
+let currentSelectedListItem = null;
 
 function setupLaunchList(launchData) {
     launchData.forEach(launch => {
@@ -18,7 +19,7 @@ function setupLaunchList(launchData) {
                 <p>Launch window: <date>${launch.windowstart} to ${launch.windowend}</p>
                 </div>
                 `
-            )
+            );
     });
 }
 
@@ -40,12 +41,22 @@ function setupMapMarkers(launchData) {
     console.log(markerList);
 }
 
-function setupClickListeners() {
-        $('.launch-list-item').click(function(e) {
-        console.log($(this).data('id'));
+function setupEventListeners() {
+    launchListClickEvents();
+}
+
+function launchListClickEvents() {
+       // User clicks a launchList item: zoom and center the map to the correct marker, highlight the list item
+    $('.launch-list-item').click(function(e) {
+        console.log(`list item id: ${$(this).data('id')}`);
         let marker = markerList[$(this).data('id')];
         map.setZoom(10);
         map.setCenter(marker.getPosition());
+        if(currentSelectedListItem) {
+            currentSelectedListItem.removeClass('launch-list-item-selected');
+        }
+        currentSelectedListItem = $(this);
+        $(this).addClass('launch-list-item-selected');
     });
 }
 
@@ -63,12 +74,12 @@ function setupApplication() {
         launchData = rjson.launches; // launches is the name of the array of launch elements
         setupMapMarkers(launchData);
         setupLaunchList(launchData);
-        setupClickListeners();
+        setupEventListeners();
     });
 }
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById('js-map-inner'), {center: {lat: 30.2672, lng: -97.7431}, zoom: 3});
+    map = new google.maps.Map(document.getElementById('js-map-inner'), {center: {lat: 30.2672, lng: -97.7431}, zoom: 2});
     //map.style.position = 'fixed';
     mapLoaded = true;
 }

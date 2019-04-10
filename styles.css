@@ -38,3 +38,7 @@ html, body {
 .launch-list-item {
     border: 1px solid black;
 }
+
+.launch-list-item-selected {
+    background-color: lightgrey;
+}
