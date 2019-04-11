@@ -7,7 +7,7 @@ let markerList = {}; // key: launch id from LaunchLibray, value: reference to as
 let mapLoaded = false;
 let currentSelectedListItem = null;
 let mapInitialZoom = 2;
-let mapMarkerSelectZoom = 10;
+let mapMarkerSelectZoom = 15;
 
 function setupLaunchList(launchData) {
     launchData.forEach(launch => {
@@ -120,7 +120,7 @@ function setupApplication() {
     //
 
     console.log("Making initial call to launchLibrary");
-    fetch('https://launchlibrary.net/1.4/launch/next/5')
+    fetch('https://launchlibrary.net/1.4/launch/next/10')
     .then(response => response.json())
     .then(rjson => {
         launchData = rjson.launches; // launches is the name of the array of launch elements
@@ -131,8 +131,21 @@ function setupApplication() {
 }
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById('js-map-inner'), {center: {lat: 30.2672, lng: -97.7431}, zoom: mapInitialZoom});
-    //map.style.position = 'fixed';
+    map = new google.maps.Map(document.getElementById('js-map-inner'),
+    {
+        mapTypeId: 'terrain',
+        //center: {lat: 30.2672, lng: -97.7431},
+        center: {lat: 0.0, lng: 0.0},
+        zoom: mapInitialZoom,
+        streetViewControl: false,
+        fullscreenControl: false
+    });
+
+    let zoomControlDiv = document.createElement('div');
+    let zoomControl = new mapZoomOutControl(zoomControlDiv, map);
+    zoomControlDiv.index = 1;
+    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(zoomControlDiv);
+
     mapLoaded = true;
 }
 
