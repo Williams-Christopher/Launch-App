@@ -9,7 +9,7 @@ function mapZoomOutControl(controlDiv, map) {
     controlUI.style.marginBottom = '22px';
     controlUI.style.marginRight = '10px';
     controlUI.style.textAlign = 'center';
-    controlUI.title = 'Click to zoom out to world';
+    controlUI.title = 'Zoom out to world';
     controlDiv.appendChild(controlUI);
 
     // Set CSS for the control interior
