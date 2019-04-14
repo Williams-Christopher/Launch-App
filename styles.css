@@ -32,6 +32,48 @@ html, body {
     width: 100%;
 }
 
+.btn-about-logo {
+    vertical-align: middle;
+}
+
+.about-overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(200, 200, 200, .9);
+    z-index: 2;
+}
+
+.about-overlay-content {
+    position: relative;
+    padding: 15px;
+    color: white;
+    background-color: rgba(25, 25, 25, .9);
+    width: 50%;
+    min-height: 75%;
+    margin: 30px auto;
+}
+
+.about-overlay-hidden {
+    display: none;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.about-overlay-content.la-logo {
+    display: inline-block;
+}
+
+.about-overlay-content h1 {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 0;
+}
+
 /*.container {*/
 #js-launch-list {
     min-height: var(--halfHeight);
@@ -55,5 +97,10 @@ html, body {
 @media screen and (max-width: 420px) {
     .launch-list-item {
         width: 95%;
+    }
+
+    .about-overlay-content {
+        width: 90%;
+        margin: 10px auto;
     }
 }

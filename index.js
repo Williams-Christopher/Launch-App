@@ -107,9 +107,30 @@ function findLaunchListItemForId(id) {
    highlightLaunchListElement(launchListElement);
 }
 
+function aboutSplashClickEvents() {
+    $('#js-about-overlay').on ('click', toggleAboutSplashDisplay);
+    
+    // Stop event bubbling when a link is clicked on the About splash
+    $('#js-about-overlay a').click(function(e) {
+        e.stopPropagation();
+    })
+}
+
+function toggleAboutSplashDisplay() {
+    $('#js-about-overlay').toggleClass('about-overlay-hidden');
+    $('body').toggleClass('no-scroll');
+}
+
 function setupEventListeners() {
+    // Map event listeners:
     // Listener for marker clicks defined in setupMapMarkers()
+    // Listener for Zoom map button click in initMap()
+    // Listener for about LaunchApp map button click in initMap()
+
+    // Additonal:
     launchListClickEvents();
+    aboutSplashClickEvents();
+
 }
 
 function setupApplication() {
@@ -141,11 +162,18 @@ function initMap() {
         fullscreenControl: false
     });
 
+    // Add Zoom to World map control
     let zoomControlDiv = document.createElement('div');
     let zoomControl = new mapZoomOutControl(zoomControlDiv, map);
     zoomControlDiv.index = 1;
     map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(zoomControlDiv);
 
+    // Add About map control
+    let aboutControlDiv = document.createElement('div');
+    let aboutControl = new mapAboutControl(aboutControlDiv, map);
+    aboutControlDiv.index = 2;
+    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(aboutControlDiv);
+    
     mapLoaded = true;
 }
 
