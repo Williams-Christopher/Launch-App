@@ -82,16 +82,21 @@ html, body {
     /* margin: 5px 0 0 0; */
     /* overflow-y: scroll; */
     /* overflow: hidden; */
+    background-color: lightblue;
 }
 
 .launch-list-item {
+    padding: 10px;
+    background-color: whitesmoke;
     width: 80%;
-    margin: 5px auto;
-    border: 1px solid black;
+    margin: 10px auto;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .2), 0 10px 10px 0 rgba(0, 0, 0, .1);
 }
 
 .launch-list-item-selected {
-    background-color: lightgrey;
+    background-color: beige;
 }
 
 @media screen and (max-width: 420px) {
