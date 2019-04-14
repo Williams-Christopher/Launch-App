@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Launch App</title>
+    <title>LaunchApp - Find out what's going up!</title>
     <link rel="icon" type="image/png" href="./favicon.png">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="no-scroll">
     <div id="js-map-outer">
         <div id="js-map-inner"></div>
     </div>
@@ -21,6 +21,29 @@
         <!-- </div> -->
     <!-- </section> -->
     <!-- Load resources -->
+    <div id="js-about-overlay" class="about-overlay">
+        <div id="js-about-content"class="about-overlay-content">
+            <img class="la-logo" src="./about_overlay_logo.png" alt="LaunchApp Logo" />
+            <h1>LaunchApp</h1>
+            <h2>Find out what's going up!</h2>
+            <p>LaunchApp is designed to let you know about upcoming rocket launches and let you explore the launch sites in a map.</p>
+            <p>Launch app uses these technologies and services:</p>
+            <ul>
+                <li>APIs
+                    <ul>
+                    <li><a href="https://launchlibrary.net/docs/1.4/api.html" target="_blank">LaunchLibrary</a></li>
+                    <li><a href="http://developers.google.com/maps/documentation/" target="_blank">Google Maps Platform</a></li>
+                    </ul></li>
+                <li>HTML 5</li>
+                <li>CSS 3</li>
+                <li>Javascript</li>
+                <li>jQuery</li>
+                <li>LaunchApp icon sourced from <a href="https://www.flaticon.com/authors/dreamstale">dreamstale</a></li>
+            </ul>
+            <h2>Click anywhere to begin exploring!</h2>
+            <p>LaunchApp is designed and developed in Austin, Texas by <a href="mailto:cw@chriswillia.ms">Christopher Williams</a></p>
+        </div>
+    </div>
     <script src="custom_map_control.js"></script>
     <script src="index.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAo2xUHE8t_f5J1QoASqUnZ0HOrvRPCY6Q&callback=initMap" type="text/javascript"></script>
