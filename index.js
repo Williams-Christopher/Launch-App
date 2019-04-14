@@ -141,11 +141,18 @@ function initMap() {
         fullscreenControl: false
     });
 
+    // Add Zoom to World map control
     let zoomControlDiv = document.createElement('div');
     let zoomControl = new mapZoomOutControl(zoomControlDiv, map);
     zoomControlDiv.index = 1;
     map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(zoomControlDiv);
 
+    // Add About map control
+    let aboutControlDiv = document.createElement('div');
+    let aboutControl = new mapAboutControl(aboutControlDiv, map);
+    aboutControlDiv.index = 2;
+    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(aboutControlDiv);
+    
     mapLoaded = true;
 }
 

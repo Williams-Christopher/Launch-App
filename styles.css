@@ -32,6 +32,10 @@ html, body {
     width: 100%;
 }
 
+.about-logo {
+ vertical-align: middle;
+}
+
 /*.container {*/
 #js-launch-list {
     min-height: var(--halfHeight);
