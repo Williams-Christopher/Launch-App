@@ -23,7 +23,7 @@ function mapZoomOutControl(controlDiv, map) {
     controlText.innerHTML = 'Zoom to World';
     controlUI.appendChild(controlText);
 
-    // Add event listener for zoom out to world custom control
+    // Add event listener for zoom out to world button clicks
     controlUI.addEventListener('click', () => map.setZoom(mapInitialZoom));
 }
 
@@ -50,6 +50,6 @@ function mapAboutControl(controlDiv, map) {
         controlText.innerHTML = 'About <img class="btn-about-logo" src="./btn_about_logo.png" alt="LaunchApp Logo" />LaunchApp';
         controlUI.appendChild(controlText);
     
-        // Add event listener for zoom out to world custom control
+        // Add event listener for about button clicks
         controlUI.addEventListener('click', () => toggleAboutSplashDisplay());
 }
