@@ -13,4 +13,4 @@ LaunchApp utilizes:
 - JavaScript
 - jQuery
 
-Visit the [Live application](https://williams-christopher.github.i…)
+Visit the [Live application](https://williams-christopher.github.io/Launch-App/)
