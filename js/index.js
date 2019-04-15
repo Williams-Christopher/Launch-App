@@ -49,7 +49,8 @@ function highlightLaunchListElement(element, isScroll = true) {
 }
 
 function scrollSelectedElementToTop(element) {
-    $($([document.documentElement, document.body])).animate({scrollTop: $(element).offset().top - $(element).parent().offset().top + $(element).parent().scrollTop()});
+    // find the difference between the top of list item to scroll to and the top of the launch list div. Let jQuery animate moving the top of the list item to the new position.
+    $($([document.documentElement, document.body])).animate({scrollTop: ($(element).offset().top - 5) - $(element).parent().offset().top + $(element).parent().scrollTop()});
 }
 
 function launchListClickEvents() {
