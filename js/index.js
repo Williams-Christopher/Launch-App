@@ -16,7 +16,10 @@ function setupLaunchList(launchData) {
                 <div class="launch-list-item" data-id="${launch.id}">
                 <h1>${launch.name}</h1>
                 <p>${launch.missions[0] ? launch.missions[0].description : 'Mission description is unavailable.'}</p>
-                <p>Launch window: <date>${launch.windowstart} to ${launch.windowend}</p>
+                <p>Launch window: <time datetime="${launch.windowstart}">${launch.windowstart}</time> to <time datetime="${launch.windowend}">${launch.windowend}</time></p>
+                ${(launch.rocket.agencies !== null) ? (launch.rocket.agencies[0]) ? `<p>Rocket agency information: <a href="${launch.rocket.agencies[0].wikiURL}" target="_blank">${launch.rocket.agencies[0].name}</a></p>` : '' : ''}
+                ${launch.missions[0] ? (launch.missions[0].agencies !== null) ? (launch.missions[0].agencies[0]) ? `<p>Mission agency information: <a href="${launch.missions[0].agencies[0].wikiURL}" target="_blank">${launch.missions[0].agencies[0].name}</a></p>` : '' : '' : ''}
+                ${launch.vidURLs[0] ? `<p>Watch this launch: <a href="${launch.vidURLs[0]}" target="_blank">${launch.vidURLs[0]}</a></p>` : ''}
                 </div>
                 `
             );
