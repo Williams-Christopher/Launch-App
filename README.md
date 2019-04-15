@@ -6,11 +6,11 @@ LaunchApp gives you a list of upcoming space launches and lets you learn more ab
 
 LaunchApp utilizes:
 - APIs
- - LaunchLibrary => (https://launchlibrary.net/docs/1.4/api.html)
- - Google Maps Platform - JavaScript API => (http://developers.google.com/maps/documentation/)
+  - LaunchLibrary => (https://launchlibrary.net/docs/1.4/api.html)
+  - Google Maps Platform - JavaScript API => (http://developers.google.com/maps/documentation/)
 - HTML 5
 - CSS 3
 - JavaScript
 - jQuery
 
-[Live application](https://williams-christopher.github.i…)
+Visit the [Live application](https://williams-christopher.github.i…)
