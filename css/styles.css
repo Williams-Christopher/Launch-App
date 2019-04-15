@@ -40,7 +40,7 @@ html, body {
 .about-overlay-content {
     position: relative;
     padding: 15px;
-    color: white;
+    color: whitesmoke;
     background-color: rgba(25, 25, 25, .9);
     width: 50%;
     min-height: 75%;
@@ -65,6 +65,15 @@ html, body {
     margin-bottom: 0;
 }
 
+.about-overlay a:link, .about-overlay a:visited {
+    color: beige;
+}
+
+.about-overlay a:hover, .about-overlay a:active {
+    color: whitesmoke;
+    text-shadow: lightgrey .05em .05em .1em;
+}
+
 #js-launch-list {
     min-height: var(--halfHeight);
     position: absolute;
@@ -83,6 +92,15 @@ html, body {
 
 .launch-list-item-selected {
     background-color: beige;
+}
+
+.launch-list-item a:link, .launch-list-item a:visited {
+    color: blue;
+}
+
+.launch-list-item a:hover, .launch-list-item a:active {
+    color: blue;
+    text-shadow: grey .05em .05em .1em;
 }
 
 @media screen and (max-width: 420px) {
