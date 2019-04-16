@@ -47,7 +47,7 @@ function mapAboutControl(controlDiv, map) {
         controlText.style.lineHeight = '38px';
         controlText.style.paddingLeft = '5px';
         controlText.style.paddingRight = '5px';
-        controlText.innerHTML = 'About <img class="btn-about-logo" src="./images/btn_about_logo.png" alt="LaunchApp Logo" />LaunchApp';
+        controlText.innerHTML = '<img class="btn-about-logo" src="./images/btn_about_logo.png" alt="LaunchApp Logo" />About LaunchApp';
         controlUI.appendChild(controlText);
     
         // Add event listener for about button clicks
