@@ -138,7 +138,7 @@ function handleError(e) {
         `
         <div class="launch-list-item error">
             <p>So sorry - An error occured while retrieving the list of upcoming launches. Please try again in a few moments by refreshing this page.<p>
-            <p>If this error continues, <a href="mailto:apperror@chriswillia.ms?subject=LaunchApp%20Error&body=Error%20message-${e.message}">please let me know</a>.</p>
+            <p>If this issue continues, <a href="mailto:apperror@chriswillia.ms?subject=LaunchApp%20Error&body=Error%20message-${e.message}">please let me know</a>.</p>
             <p>Additional error information:</p>
             <p>${e.message}</p>
         </div>
@@ -153,7 +153,8 @@ function initMap() {
         center: {lat: 0.0, lng: 0.0},
         zoom: mapInitialZoom,
         streetViewControl: false,
-        fullscreenControl: false
+        fullscreenControl: false,
+        minZoom: mapInitialZoom
     });
 
     // Add Zoom to World map control
