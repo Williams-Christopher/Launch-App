@@ -1,5 +1,6 @@
 'use strict'
 
+let baseUrl = 'https://launchlibrary.net/1.4/';
 let launchData; // JSON from LaunchLibrary
 //let weatherData; // JS Object to hold a reference to a launch ID and its associated weather forecast
 let map; // GoogleMap reference
@@ -97,7 +98,7 @@ function toggleAboutSplashDisplay() {
     $('body').toggleClass('no-scroll');
 }
 
-function setupEventListeners() {
+function setupAdditionalEventListeners() {
     // Map event listeners:
     // Listener for marker clicks defined in setupMapMarkers()
     // Listener for Zoom map button click in initMap()
@@ -105,20 +106,45 @@ function setupEventListeners() {
 
     // Additonal events:
     launchListClickEvents();
-    aboutSplashClickEvents();
+    //aboutSplashClickEvents();
 
 }
 
-function setupApplication() {
-    // Call LaunchLibrary API for the next ten launches
-    fetch('https://launchlibrary.net/1.4/launch/next/10')
-    .then(response => response.json())
+function setupApplication(apiEndPoint) {
+    // Make sure that events for overlay clicks are registered early on in case of error
+    aboutSplashClickEvents();
+
+    
+    // Build query
+    let requestUrl = baseUrl + apiEndPoint;
+
+    // Make request / handle error
+    fetch(requestUrl)
+    .then(response => {
+        if(response.ok) {
+            return response.json();
+        }
+        throw new error(response.statusText);
+    })
     .then(rjson => {
         launchData = rjson.launches; //{"launches":[{launch01}, {launch02}]}
         setupMapMarkers(launchData);
         setupLaunchList(launchData);
-        setupEventListeners();
-    });
+        setupAdditionalEventListeners();
+    })
+    .catch(e => handleError(e));
+}
+
+function handleError(e) {
+    $('#js-launch-list').append(
+        `
+        <div class="launch-list-item error">
+            <p>So sorry - An error occured while retrieving the list of upcoming launches. Please try again in a few moments by refreshing this page.<p>
+            <p>Additional error information:</p>
+            <p>${e.message}</p>
+        </div>
+        `
+        );
 }
 
 function initMap() {
@@ -144,4 +170,4 @@ function initMap() {
     map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(aboutControlDiv);
 }
 
-$(setupApplication);
+$(setupApplication('launch/next/10'));

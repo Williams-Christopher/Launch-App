@@ -75,6 +75,7 @@ html, body {
 }
 
 #js-launch-list {
+    width: 100%;
     min-height: var(--halfHeight);
     position: absolute;
     top: var(--halfHeight);
@@ -101,6 +102,10 @@ html, body {
 .launch-list-item a:hover, .launch-list-item a:active {
     color: blue;
     text-shadow: grey .05em .05em .1em;
+}
+
+.error {
+    font-weight: bold;
 }
 
 @media screen and (max-width: 420px) {
