@@ -45,18 +45,20 @@ p {
     width: 100%;
     top: 0;
     left: 0;
+    padding-top: 10%;
     background-color: rgba(200, 200, 200, .9);
     z-index: 2;
 }
 
 .about-overlay-content {
     position: relative;
-    padding: 15px;
+    padding: 10%;
+    line-height: 1.5rem;
     color: whitesmoke;
     background-color: rgba(25, 25, 25, .9);
     width: 50%;
     min-height: 75%;
-    margin: 30px auto;
+    margin: auto auto;
 }
 
 .about-overlay-hidden {
@@ -91,13 +93,14 @@ p {
     min-height: var(--halfHeight);
     position: absolute;
     top: var(--halfHeight);
-    background-color: #add8f2;
+    background-color: #add8f2;;
 }
 
 .launch-list-item {
     cursor: pointer;
     padding: 10px;
     background-color: whitesmoke;
+    line-height: 1.5rem;
     width: 80%;
     margin: 10px auto;
     border-radius: 7px;
@@ -129,5 +132,12 @@ p {
     .about-overlay-content {
         width: 90%;
         margin: 10px auto;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .launch-list-item h1 {
+        line-height: 2.5rem;
     }
 }
