@@ -97,6 +97,7 @@ p {
 }
 
 .launch-list-item {
+    display: flex;
     cursor: pointer;
     padding: 10px;
     background-color: whitesmoke;
@@ -120,6 +121,17 @@ p {
     text-shadow: grey .05em .05em .1em;
 }
 
+.rocket-image {
+    min-width: 20%;
+    max-width: 20%;
+    max-height: 30vh;
+    margin-right: 10px;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    border-radius: 7px;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .2), 0 10px 10px 0 rgba(0, 0, 0, .1);
+}
+
 .error {
     font-weight: bold;
 }
@@ -134,9 +146,13 @@ p {
         margin: 10px auto;
         padding: 20px;
     }
+
+    .rocket-image {
+        display: none;
+    }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1500px) {
     .launch-list-item h1 {
         line-height: 2.5rem;
     }
