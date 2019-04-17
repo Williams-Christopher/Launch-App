@@ -10,6 +10,14 @@ html, body {
     height:100%;
 }
 
+h1, h2, h3 {
+    font-family: "Montserrat", sans-serif;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+}
+
 #js-map-outer {
     min-height: var(--halfHeight);
     position: fixed;
@@ -21,6 +29,10 @@ html, body {
 #js-map-inner {
     min-height: var(--halfHeight);
     width: 100%;
+}
+
+.custom-map-control:hover {
+    background-color: lightgrey;
 }
 
 .btn-about-logo {
@@ -79,15 +91,16 @@ html, body {
     min-height: var(--halfHeight);
     position: absolute;
     top: var(--halfHeight);
-    background-color: lightblue;
+    background-color: #add8f2;
 }
 
 .launch-list-item {
+    cursor: pointer;
     padding: 10px;
     background-color: whitesmoke;
     width: 80%;
     margin: 10px auto;
-    border-radius: 10px;
+    border-radius: 7px;
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .2), 0 10px 10px 0 rgba(0, 0, 0, .1);
 }
 
