@@ -15,6 +15,8 @@ LaunchApp utilizes:
 
 Visit the [Live application](https://williams-christopher.github.io/Launch-App/)
 
+## Screen shots
+
 _LaunchApp_ Splash page:
 ![image](https://user-images.githubusercontent.com/26190276/56255313-107ea780-608a-11e9-8748-a1e11a219522.png)
 
