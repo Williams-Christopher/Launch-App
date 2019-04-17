@@ -13,14 +13,17 @@ function setupLaunchList(launchData) {
         $('#js-launch-list')
             .append(
                 `
-                <div class="launch-list-item" data-id="${launch.id}">
+                <section class="launch-list-item" data-id="${launch.id}">
+                ${launch.rocket.imageURL.startsWith('http') ? `<img class="rocket-image" alt="${launch.name}" src="${launch.rocket.imageURL}" />` : ''}
+                <article class="Launch-list-item-content">
                 <h1>${launch.name}</h1>
                 <p>${launch.missions[0] ? launch.missions[0].description : 'Mission description is unavailable.'}</p>
                 <p>Launch window: <time datetime="${launch.windowstart}">${launch.windowstart}</time> to <time datetime="${launch.windowend}">${launch.windowend}</time> <a href="${baseUrl + 'calendar/' + launch.id}" target="_blank">[Add to calendar - .ics]</a></p>
                 ${(launch.rocket.agencies !== null) ? (launch.rocket.agencies[0]) ? `<p>Rocket agency: <a href="${launch.rocket.agencies[0].wikiURL}" target="_blank">${launch.rocket.agencies[0].name}</a></p>` : '' : ''}
                 ${launch.missions[0] ? (launch.missions[0].agencies !== null) ? (launch.missions[0].agencies[0]) ? `<p>Mission agency: <a href="${launch.missions[0].agencies[0].wikiURL}" target="_blank">${launch.missions[0].agencies[0].name}</a></p>` : '' : '' : ''}
                 ${launch.vidURLs[0] ? `<p>Watch this launch: <a href="${launch.vidURLs[0]}" target="_blank">${launch.vidURLs[0]}</a></p>` : ''}
-                </div>
+                </article>
+                </section>
                 `
             );
     });
@@ -40,13 +43,13 @@ function setupMapMarkers(launchData) {
     }
 }
 
-function highlightLaunchListElement(element, isScroll = true) {
+function highlightLaunchListElement(element, scrollToItem = true) {
     if(currentSelectedListItem) {
         currentSelectedListItem.removeClass('launch-list-item-selected');
     }
     currentSelectedListItem = element;
     currentSelectedListItem.addClass('launch-list-item-selected');
-    if(isScroll) {
+    if(scrollToItem) {
         scrollSelectedElementToTop(element);
     }
 }
@@ -135,12 +138,13 @@ function setupApplication(apiEndPoint) {
 function handleError(e) {
     $('#js-launch-list').append(
         `
-        <div class="launch-list-item error">
-            <p>So sorry - An error occured while retrieving the list of upcoming launches. Please try again in a few moments by refreshing this page.<p>
+        <article class="launch-list-item error">
+            <h1>So sorry -</h1>
+            <p>An error occured while retrieving the list of upcoming launches. Please try again in a few moments by refreshing this page.<p>
             <p>If this issue continues, <a href="mailto:apperror@chriswillia.ms?subject=LaunchApp%20Error&body=Error%20message-${e.message}">please let me know</a>.</p>
             <p>Additional error information:</p>
             <p>${e.message}</p>
-        </div>
+        </article>
         `
         );
 }
@@ -169,4 +173,4 @@ function initMap() {
     map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(aboutControlDiv);
 }
 
-$(setupApplication('launch/next/10'));
+$(setupApplication('launch/next/15'));
