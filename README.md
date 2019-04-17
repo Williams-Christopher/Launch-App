@@ -19,8 +19,8 @@ Visit the [Live application](https://williams-christopher.github.io/Launch-App/)
 
 ## Screen shots
 
-_LaunchApp_ Splash page:
-![image](https://user-images.githubusercontent.com/26190276/56255313-107ea780-608a-11e9-8748-a1e11a219522.png)
+_LaunchApp_ splash page:
+![LaunchApp splash page](https://user-images.githubusercontent.com/26190276/56255313-107ea780-608a-11e9-8748-a1e11a219522.png)
 
-LaunchApp application:
-![image](https://user-images.githubusercontent.com/26190276/56255394-53407f80-608a-11e9-8f8c-9a679c70442a.png)
+_LaunchApp_ main application:
+![LaunchApp main application](https://user-images.githubusercontent.com/26190276/56255394-53407f80-608a-11e9-8f8c-9a679c70442a.png)
