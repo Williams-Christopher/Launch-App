@@ -2,8 +2,10 @@
 
 ## Find out what's going up!
 
-LaunchApp gives you a list of upcoming space launches and lets you learn more about them.
+### Summary:
+LaunchApp gives you a list of upcoming space launches and lets you learn more about them. You can explore the launch site through the map, learn about why a mission is happening and who is making it happen, and add the launch to your calendar (.ics files only). If available, get a link to the webcast for the launch too.
 
+### Technology Used:
 LaunchApp utilizes:
 - HTML 5
 - CSS 3
