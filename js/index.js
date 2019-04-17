@@ -2,7 +2,6 @@
 
 let baseUrl = 'https://launchlibrary.net/1.4/';
 let launchData; // JSON from LaunchLibrary
-//let weatherData; // JS Object to hold a reference to a launch ID and its associated weather forecast
 let map; // GoogleMap reference
 let markerList = {}; // key: launch id from LaunchLibray, value: reference to associated GoogleMap marker
 let currentSelectedListItem = null;
@@ -17,9 +16,9 @@ function setupLaunchList(launchData) {
                 <div class="launch-list-item" data-id="${launch.id}">
                 <h1>${launch.name}</h1>
                 <p>${launch.missions[0] ? launch.missions[0].description : 'Mission description is unavailable.'}</p>
-                <p>Launch window: <time datetime="${launch.windowstart}">${launch.windowstart}</time> to <time datetime="${launch.windowend}">${launch.windowend}</time></p>
-                ${(launch.rocket.agencies !== null) ? (launch.rocket.agencies[0]) ? `<p>Rocket agency information: <a href="${launch.rocket.agencies[0].wikiURL}" target="_blank">${launch.rocket.agencies[0].name}</a></p>` : '' : ''}
-                ${launch.missions[0] ? (launch.missions[0].agencies !== null) ? (launch.missions[0].agencies[0]) ? `<p>Mission agency information: <a href="${launch.missions[0].agencies[0].wikiURL}" target="_blank">${launch.missions[0].agencies[0].name}</a></p>` : '' : '' : ''}
+                <p>Launch window: <time datetime="${launch.windowstart}">${launch.windowstart}</time> to <time datetime="${launch.windowend}">${launch.windowend}</time> <a href="${baseUrl + 'calendar/' + launch.id}" target="_blank">[Add to calendar - .ics]</a></p>
+                ${(launch.rocket.agencies !== null) ? (launch.rocket.agencies[0]) ? `<p>Rocket agency: <a href="${launch.rocket.agencies[0].wikiURL}" target="_blank">${launch.rocket.agencies[0].name}</a></p>` : '' : ''}
+                ${launch.missions[0] ? (launch.missions[0].agencies !== null) ? (launch.missions[0].agencies[0]) ? `<p>Mission agency: <a href="${launch.missions[0].agencies[0].wikiURL}" target="_blank">${launch.missions[0].agencies[0].name}</a></p>` : '' : '' : ''}
                 ${launch.vidURLs[0] ? `<p>Watch this launch: <a href="${launch.vidURLs[0]}" target="_blank">${launch.vidURLs[0]}</a></p>` : ''}
                 </div>
                 `
